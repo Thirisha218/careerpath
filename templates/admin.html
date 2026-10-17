@@ -1,0 +1,18 @@
+{% extends "base.html" %}{% block body %}<h1 class="h3">Admin dashboard</h1>
+<p>{{n_users}} registered users. {{n_tests}} quizzes taken.</p>
+<h2 class="h5">Courses</h2>
+<form method="post" action="/admin/courses" class="row g-2 mb-3"><input type="hidden" name="_t" value="{{token}}">
+<div class="col-md-3"><input name="name" class="form-control" placeholder="Course name" aria-label="Course name" required></div>
+<div class="col-md-2"><select name="category_id" class="form-select" aria-label="Field">{% for c in cats %}<option value="{{c.id}}">{{c.name}}</option>{% endfor %}</select></div>
+<div class="col-md-1"><input name="duration" type="number" step="0.5" min="0.5" max="10" class="form-control" placeholder="Years" aria-label="Years" required></div>
+<div class="col-md-3"><input name="eligibility" class="form-control" placeholder="Eligibility" aria-label="Eligibility" required></div>
+<div class="col-md-3"><input name="description" class="form-control" placeholder="Description" aria-label="Description" required></div>
+<div class="col-12"><button class="btn btn-primary btn-sm">Add course</button></div></form>
+<table class="table table-sm"><tbody>{% for c in courses %}<tr><td>{{c.name}}</td><td>{{c.cat}}</td><td class="text-end"><form method="post" action="/admin/courses/{{c.id}}/delete" onsubmit="return confirm('Delete this course?')"><input type="hidden" name="_t" value="{{token}}"><button class="btn btn-sm btn-outline-danger">Delete</button></form></td></tr>{% else %}<tr><td>No courses yet.</td></tr>{% endfor %}</tbody></table>
+<h2 class="h5">Scholarships</h2>
+<form method="post" action="/admin/scholarships" class="row g-2 mb-3"><input type="hidden" name="_t" value="{{token}}">
+<div class="col-md-3"><input name="name" class="form-control" placeholder="Name" aria-label="Name" required></div>
+<div class="col-md-4"><input name="eligibility" class="form-control" placeholder="Eligibility" aria-label="Eligibility" required></div>
+<div class="col-md-3"><input name="url" class="form-control" placeholder="Official https:// link" aria-label="Official link"></div>
+<div class="col-md-2"><button class="btn btn-primary w-100">Add scholarship</button></div></form>
+<table class="table table-sm"><tbody>{% for s in schs %}<tr><td>{{s.name}}</td><td class="text-end"><form method="post" action="/admin/scholarships/{{s.id}}/delete" onsubmit="return confirm('Delete this scholarship?')"><input type="hidden" name="_t" value="{{token}}"><button class="btn btn-sm btn-outline-danger">Delete</button></form></td></tr>{% else %}<tr><td>No scholarships yet.</td></tr>{% endfor %}</tbody></table>{% endblock %}

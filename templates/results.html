@@ -1,0 +1,6 @@
+{% extends "base.html" %}{% block body %}<h1 class="h3">Your matches</h1>
+{% if not ranked %}<p>You have not taken the quiz yet.</p><a class="btn btn-primary" href="/quiz">Take the quiz</a>
+{% else %}{% for r in ranked %}<section class="mb-4"><h2 class="h5">{{r.cat.icon}} {{r.cat.name}} <span class="badge text-bg-success">{{r.pct}}% match</span></h2>
+<div class="row g-3">{% for c in r.careers %}<div class="col-md-6"><div class="card h-100"><div class="card-body"><h3 class="h6">{{c.title}}</h3><p>{{c.summary}}</p><a class="btn btn-sm btn-primary" href="/careers/{{c.id}}">View roadmap</a></div></div></div>{% endfor %}</div></section>{% endfor %}
+<a href="/quiz">Retake the quiz</a>{% endif %}
+<hr><form method="post" action="/account/delete" onsubmit="return confirm('Delete your account and all your data?')"><input type="hidden" name="_t" value="{{token}}"><button class="btn btn-link text-danger p-0">Delete my account and data</button></form>{% endblock %}

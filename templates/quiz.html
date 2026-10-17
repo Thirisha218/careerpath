@@ -1,0 +1,5 @@
+{% extends "base.html" %}{% block body %}<div class="col-lg-8 mx-auto"><h1 class="h3">Career quiz</h1>
+<form method="post"><input type="hidden" name="_t" value="{{token}}">
+{% for q, opts in quiz %}{% set i = loop.index0 %}<fieldset class="mb-4"><legend class="h6">{{loop.index}}. {{q}}</legend>
+{% for o in opts %}<div class="form-check"><input class="form-check-input" type="radio" name="q{{i}}" id="q{{i}}{{loop.index0}}" value="{{loop.index0}}" required><label class="form-check-label" for="q{{i}}{{loop.index0}}">{{o}}</label></div>{% endfor %}</fieldset>{% endfor %}
+<button class="btn btn-primary">See my matches</button></form></div>{% endblock %}

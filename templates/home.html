@@ -1,0 +1,7 @@
+{% extends "base.html" %}{% block body %}
+<section class="hero mb-4"><h1 class="display-5">Not sure what to do after 12th?</h1>
+<p class="lead col-lg-7">Take a six-question quiz, see careers that fit you, and follow a step-by-step roadmap.</p>
+<a class="btn btn-primary btn-lg" href="/quiz">Take the career quiz</a> <a class="btn btn-outline-dark btn-lg" href="/courses">Explore courses</a></section>
+<h2 class="h4">Browse by field</h2><div class="row g-3">
+{% for c in cats %}<div class="col-6 col-md-3"><a class="card h-100 text-decoration-none text-body" href="/courses?category={{c.id}}"><div class="card-body"><div class="icon">{{c.icon}}</div><h3 class="h6 mt-2">{{c.name}}</h3></div></a></div>{% endfor %}</div>
+{% endblock %}

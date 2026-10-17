@@ -1,0 +1,7 @@
+:root{--ink:#14213d;--accent:#0f766e;--tint:#e6f2f0}
+body{font-family:"Source Sans 3",system-ui,sans-serif;color:var(--ink);line-height:1.6}
+h1,h2,h3,.navbar-brand{font-family:"Fraunces",Georgia,serif;letter-spacing:-.01em}
+.navbar{background:var(--ink)}.btn-primary{background:var(--accent);border-color:var(--accent)}
+.hero{background:var(--tint);border-radius:1rem;padding:3rem 1.5rem}
+a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid #f59e0b;outline-offset:2px}
+.card .icon{font-size:1.8rem}

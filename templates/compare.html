@@ -1,0 +1,10 @@
+{% extends "base.html" %}{% block body %}<h1 class="h3">Compare careers</h1>
+<form class="row g-2 mb-3" method="get">{% for n,v in (('a',a),('b',b)) %}<div class="col-md-5"><select name="{{n}}" class="form-select" aria-label="Career {{n}}" required>
+<option value="">Choose a career</option>{% for c in allc %}<option value="{{c.id}}" {{'selected' if v==c.id}}>{{c.title}}</option>{% endfor %}</select></div>{% endfor %}
+<div class="col-md-2"><button class="btn btn-primary w-100">Compare</button></div></form>
+<p class="small text-muted">Sample data for study years, demand (1-10) and starting pay (lakhs per year). Verify with official sources.</p>
+{% if pair %}<div style="max-width:720px"><canvas id="ch" role="img" aria-label="Career comparison chart"></canvas></div>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<script>const P={{pair|tojson}};new Chart(document.getElementById('ch'),{type:'bar',data:{labels:['Study years','Demand (1-10)','Starting pay (LPA)'],
+datasets:P.map((p,i)=>({label:p.title,data:[p.study_years,p.demand_score,p.entry_pay_lpa],backgroundColor:i?'#f59e0b':'#0f766e'}))}});</script>
+{% else %}<p>Pick two careers to see them side by side.</p>{% endif %}{% endblock %}

@@ -1,0 +1,5 @@
+{% extends "base.html" %}{% block body %}<h1 class="h3">{{c.title}}</h1><p class="text-muted">{{c.cat}}</p><p>{{c.summary}}</p>
+<p><strong>Key skills:</strong> {{c.skills}}</p><p><strong>Scope:</strong> {{c.scope}}</p>
+<h2 class="h5">Roadmap</h2><ol>{% for s in steps %}<li>{{s}}</li>{% endfor %}</ol>
+<h2 class="h5">Related courses</h2><ul>{% for x in courses %}<li>{{x.name}} ({{x.duration_years}} years)</li>{% endfor %}</ul>
+<p class="small text-muted">Sample data. Verify details with official sources.</p>{% endblock %}

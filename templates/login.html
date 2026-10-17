@@ -1,0 +1,5 @@
+{% extends "base.html" %}{% block body %}<div class="col-md-5 mx-auto"><h1 class="h3">Log in</h1>
+<form method="post"><input type="hidden" name="_t" value="{{token}}">
+<label class="form-label" for="e">Email</label><input id="e" type="email" name="email" class="form-control mb-3" required>
+<label class="form-label" for="p">Password</label><input id="p" type="password" name="password" class="form-control mb-3" required>
+<button class="btn btn-primary w-100">Log in</button></form></div>{% endblock %}

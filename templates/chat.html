@@ -1,0 +1,9 @@
+{% extends "base.html" %}{% block body %}<div class="col-lg-8 mx-auto"><h1 class="h3">Ask CareerPath</h1>
+<p class="small text-muted">Answers come from our own course and career data, not from a live AI model. Always confirm details on official websites.</p>
+<div id="log" class="border rounded p-3 mb-3" style="min-height:220px" aria-live="polite"><p class="text-muted mb-0">Try: "software developer", "nursing course", or "scholarships".</p></div>
+<form id="f" class="d-flex gap-2"><input id="m" class="form-control" maxlength="200" aria-label="Your question" required><button class="btn btn-primary">Ask</button></form></div>
+<script>const T="{{token}}",log=document.getElementById('log');
+function add(t,w){const p=document.createElement('p');p.className=w?'fw-semibold':'';p.textContent=t;log.appendChild(p)}
+document.getElementById('f').onsubmit=async e=>{e.preventDefault();const i=document.getElementById('m'),q=i.value.trim();if(!q)return;add(q,1);i.value='';
+try{const r=await fetch('/api/chat',{method:'POST',headers:{'Content-Type':'application/json','X-CSRF':T},body:JSON.stringify({message:q})});
+const d=await r.json();add(d.reply||d.error||'Something went wrong. Try again.')}catch{add('Could not reach the server. Check your connection and try again.')}}</script>{% endblock %}

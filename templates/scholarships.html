@@ -1,0 +1,2 @@
+{% extends "base.html" %}{% block body %}<h1 class="h3">Scholarships</h1><p class="small text-muted">Sample entries only. Add verified official links before real use.</p>
+<ul class="list-group">{% for r in rows %}<li class="list-group-item"><strong>{{r.name}}</strong><br>{{r.eligibility}}</li>{% else %}<li class="list-group-item">No scholarships listed yet.</li>{% endfor %}</ul>{% endblock %}

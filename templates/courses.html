@@ -1,0 +1,14 @@
+{% extends "base.html" %}{% block body %}
+<h1 class="h3">{{ 'Saved courses' if saved_page else 'Explore courses' }}</h1>
+{% if not saved_page %}<form class="row g-2 mb-4" method="get">
+<div class="col-md-5"><input name="q" value="{{q}}" class="form-control" placeholder="Search courses" aria-label="Search courses"></div>
+<div class="col-md-3"><select name="category" class="form-select" aria-label="Field"><option value="">All fields</option>{% for c in cats %}<option value="{{c.id}}" {{'selected' if cat==c.id}}>{{c.name}}</option>{% endfor %}</select></div>
+<div class="col-md-2"><select name="sort" class="form-select" aria-label="Sort"><option value="name">Name</option><option value="duration" {{'selected' if sort=='duration'}}>Duration</option></select></div>
+<div class="col-md-2"><button class="btn btn-primary w-100">Apply</button></div></form>{% endif %}
+<p class="small text-muted">Sample data. Confirm eligibility and admissions on official websites.</p>
+<div class="row g-3">{% for r in rows %}<div class="col-md-6 col-lg-4"><div class="card h-100"><div class="card-body">
+<div class="icon">{{r.icon}}</div><h2 class="h5">{{r.name}}</h2><p class="mb-1">{{r.description}}</p>
+<p class="small text-muted mb-3">{{r.duration_years}} years. {{r.eligibility}}</p>
+{% if logged_in %}<form method="post" action="/courses/{{r.id}}/save"><input type="hidden" name="_t" value="{{token}}"><button class="btn btn-sm {{'btn-outline-secondary' if r.id in saved else 'btn-primary'}}">{{'Remove from saved' if r.id in saved else 'Save course'}}</button></form>
+{% else %}<a class="btn btn-sm btn-outline-primary" href="/login">Log in to save</a>{% endif %}
+</div></div></div>{% else %}<p>No courses match. Try a different search or clear the filters.</p>{% endfor %}</div>{% endblock %}
