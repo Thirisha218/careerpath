@@ -1,7 +1,42 @@
-:root{--ink:#14213d;--accent:#0f766e;--tint:#e6f2f0}
-body{font-family:"Source Sans 3",system-ui,sans-serif;color:var(--ink);line-height:1.6}
-h1,h2,h3,.navbar-brand{font-family:"Fraunces",Georgia,serif;letter-spacing:-.01em}
-.navbar{background:var(--ink)}.btn-primary{background:var(--accent);border-color:var(--accent)}
-.hero{background:var(--tint);border-radius:1rem;padding:3rem 1.5rem}
-a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid #f59e0b;outline-offset:2px}
-.card .icon{font-size:1.8rem}
+
+
+:root{--ink:#0e1f3d;--ink2:#1c2f55;--paper:#f6f8fc;--mist:#dfe6f2;--gold:#f2a900;--gold-d:#c98a00;--teal:#0f766e;--text:#1c2740;--muted:#5a6784}
+body{font-family:"Source Sans 3",system-ui,sans-serif;color:var(--text);background:var(--paper);line-height:1.65;font-size:1.05rem}
+h1,h2,h3,h4,.navbar-brand{font-family:"Fraunces",Georgia,serif;font-weight:600;letter-spacing:-.015em;color:var(--ink)}
+a{color:var(--teal)}
+.navbar{background:var(--ink);padding:.7rem 0}
+.navbar-brand{color:#fff!important;font-size:1.35rem}
+.navbar-brand::before{content:"";display:inline-block;width:.7rem;height:.7rem;border-radius:50%;background:var(--gold);margin-right:.5rem}
+.navbar .nav-link{color:#cdd6ea;font-weight:600}.navbar .nav-link:hover{color:#fff}
+.btn{border-radius:999px;font-weight:600;padding:.5rem 1.2rem}
+.btn-primary{background:var(--ink);border-color:var(--ink);color:#fff}
+.btn-primary:hover,.btn-primary:focus{background:var(--ink2);border-color:var(--ink2)}
+.btn-gold{background:var(--gold);border-color:var(--gold);color:var(--ink)}
+.btn-gold:hover{background:var(--gold-d);border-color:var(--gold-d);color:var(--ink)}
+.navbar .btn-primary{background:var(--gold);border-color:var(--gold);color:var(--ink)}
+.btn-outline-primary{color:var(--ink);border-color:var(--ink)}.btn-outline-primary:hover{background:var(--ink);color:#fff}
+.card{border:1px solid var(--mist);border-radius:14px;background:#fff;box-shadow:none}
+.card .icon{width:3rem;height:3rem;border-radius:10px;background:var(--mist);display:grid;place-items:center;font-size:1.5rem}
+a.card{transition:border-color .15s}a.card:hover{border-color:var(--gold)}
+.form-control,.form-select{border-radius:10px;border-color:#b9c4dc;padding:.6rem .8rem}
+.form-control:focus,.form-select:focus{border-color:var(--ink);box-shadow:0 0 0 .2rem rgba(242,169,0,.35)}
+a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+.alert{border-radius:12px}.badge.text-bg-success{background:var(--teal)!important}
+.list-group-item{border-color:var(--mist)}.table{--bs-table-bg:transparent}
+.hero{background:var(--ink);color:#e8eefb;border-radius:22px;padding:3.2rem 2.2rem;margin-bottom:3rem;overflow:hidden}
+.hero h1{color:#fff;font-size:clamp(2.1rem,5vw,3.4rem);line-height:1.1}
+.hero p.lead{color:#cdd6ea;max-width:34rem}
+.route{width:100%;max-width:440px;height:auto}
+.route .trail{fill:none;stroke:var(--gold);stroke-width:4;stroke-linecap:round;stroke-dasharray:8 10}
+.route .stop{fill:var(--ink);stroke:var(--gold);stroke-width:4}
+.route text{fill:#fff;font-family:"Source Sans 3",sans-serif;font-size:17px;font-weight:600}
+.route .goal{fill:var(--gold)}
+@media (prefers-reduced-motion:no-preference){.route .trail{stroke-dasharray:900;stroke-dashoffset:900;animation:draw 2.2s ease-out .3s forwards}@keyframes draw{to{stroke-dashoffset:0;stroke-dasharray:8 10}}}
+.field{border-left:6px solid var(--gold);border-radius:14px}
+.field.f2{border-left-color:var(--teal)}.field.f3{border-left-color:#3b5bdb}.field.f4{border-left-color:#c2255c}
+.steps{counter-reset:s;list-style:none;padding:0;margin:0}
+.steps li{counter-increment:s;display:flex;gap:1rem;padding:1rem 0;border-bottom:1px solid var(--mist)}
+.steps li::before{content:counter(s);flex:0 0 2.2rem;height:2.2rem;border-radius:50%;background:var(--ink);color:#fff;display:grid;place-items:center;font-weight:700}
+.steps strong{display:block;color:var(--ink)}
+.band{background:var(--mist);border-radius:18px;padding:2rem;margin-top:3rem}
+.site-foot{border-top:1px solid var(--mist);margin-top:3rem;padding:1.5rem 0;color:var(--muted);font-size:.95rem}

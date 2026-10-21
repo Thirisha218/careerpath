@@ -1,7 +1,26 @@
 {% extends "base.html" %}{% block body %}
-<section class="hero mb-4"><h1 class="display-5">Not sure what to do after 12th?</h1>
-<p class="lead col-lg-7">Take a six-question quiz, see careers that fit you, and follow a step-by-step roadmap.</p>
-<a class="btn btn-primary btn-lg" href="/quiz">Take the career quiz</a> <a class="btn btn-outline-dark btn-lg" href="/courses">Explore courses</a></section>
-<h2 class="h4">Browse by field</h2><div class="row g-3">
-{% for c in cats %}<div class="col-6 col-md-3"><a class="card h-100 text-decoration-none text-body" href="/courses?category={{c.id}}"><div class="card-body"><div class="icon">{{c.icon}}</div><h3 class="h6 mt-2">{{c.name}}</h3></div></a></div>{% endfor %}</div>
+<section class="hero"><div class="row align-items-center g-4">
+<div class="col-lg-6"><h1>Finished 12th and not sure what’s next? Find your path.</h1>
+<p class="lead my-3">Answer six quick questions, see the careers that suit you, and follow a clear roadmap from your first course to your first job.</p>
+<a class="btn btn-gold btn-lg" href="/quiz">Take the career quiz</a>
+<a class="btn btn-outline-light btn-lg ms-1" href="/courses">Browse courses</a></div>
+<div class="col-lg-6 text-center"><svg class="route" viewBox="0 0 460 340" role="img" aria-label="A path from 12th class to degree, internship and first job">
+<path class="trail" d="M50 300 C110 300 110 235 165 228 S250 200 285 160 S360 95 405 50"/>
+<circle class="stop" cx="50" cy="300" r="11"/><text x="68" y="318">12th</text>
+<circle class="stop" cx="165" cy="228" r="11"/><text x="183" y="252">Degree</text>
+<circle class="stop" cx="285" cy="160" r="11"/><text x="303" y="190">Internship</text>
+<circle class="goal" cx="405" cy="50" r="14"/><text x="300" y="40">First job</text></svg></div></div></section>
+
+<h2 class="h3 mb-3">Start with a field that interests you</h2>
+<div class="row g-3">{% for c in cats %}<div class="col-6 col-lg-3"><a class="card field f{{c.id}} h-100 text-decoration-none text-body" href="/courses?category={{c.id}}"><div class="card-body"><div class="icon">{{c.icon}}</div><h3 class="h6 mt-3 mb-0">{{c.name}}</h3></div></a></div>{% endfor %}</div>
+
+<div class="row g-5 mt-4"><div class="col-lg-5"><h2 class="h3">How CareerPath helps</h2><p class="text-muted">Four steps from “I don’t know” to a plan you can follow.</p></div>
+<div class="col-lg-7"><ol class="steps">
+<li><div><strong>Take the quiz</strong>Six short questions about what you enjoy.</div></li>
+<li><div><strong>See your matches</strong>Fields and careers ranked for you.</div></li>
+<li><div><strong>Follow a roadmap</strong>Courses, skills and steps for each career.</div></li>
+<li><div><strong>Compare and save</strong>Put two careers side by side and save courses for later.</div></li></ol></div></div>
+
+<div class="band d-md-flex align-items-center justify-content-between gap-3"><div><h2 class="h4 mb-1">Have a question first?</h2><p class="mb-0">Ask CareerPath about a career or course, or check scholarships.</p></div>
+<div class="mt-3 mt-md-0"><a class="btn btn-primary" href="/chat">Ask a question</a> <a class="btn btn-outline-primary" href="/scholarships">View scholarships</a></div></div>
 {% endblock %}
