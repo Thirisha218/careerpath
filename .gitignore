@@ -4,3 +4,5 @@ __pycache__/
 *.pyc
 setup_db.py
 make_admin.py
+sync_to_local.py
+view_db.py
